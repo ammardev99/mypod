@@ -8,6 +8,10 @@ final countSPod = StateProvider<int>((ref) {
   return 42;
 });
 
+final sliderSPod = StateProvider<double>((ref) {
+  return 42;
+});
+
 final isActiveSPod = StateProvider<bool>((ref) {
   return true;
 });

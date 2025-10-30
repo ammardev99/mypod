@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'classes/class3/state_provider.dart';
+import 'package:mypod/classes/class4/multi_practice.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
         ),
         // home: SimpleProvider1(),
         // home: SimpleProvider2(),
-        home: StateProviderLess(),
+        // home: StateProviderLess(),
         // home: StateProviderFull(),
+        home: MultiStatePractice(),
       ),
     );
   }
