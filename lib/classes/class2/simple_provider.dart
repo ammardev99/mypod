@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import '../data/data_bank.dart';
+import '../data/provider_bank.dart';
 /*
 here you learn about the simplest provider in riverpod
 update stateless to consumer widget to use provider
@@ -22,7 +22,6 @@ Used for constants, dependencies, or simple data sharing
 // StateLess to ConsumerWidget Example
 class SimpleProvider1 extends ConsumerWidget {
   const SimpleProvider1({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final temp = ref.watch(infoPod);
@@ -31,18 +30,19 @@ class SimpleProvider1 extends ConsumerWidget {
 }
 
 // StateFull to ConsumerWidget Example
-
-class SimpleProvide2 extends ConsumerStatefulWidget {
-  const SimpleProvide2({super.key});
-
+class SimpleProvider2 extends ConsumerStatefulWidget {
+  const SimpleProvider2({super.key});
   @override
-  ConsumerState<SimpleProvide2> createState() => _SimpleProvide2State();
+  ConsumerState<SimpleProvider2> createState() => _SimpleProvide2State();
 }
 
-class _SimpleProvide2State extends ConsumerState<SimpleProvide2> {
+class _SimpleProvide2State extends ConsumerState<SimpleProvider2> {
   @override
   Widget build(BuildContext context) {
     final temp = ref.watch(infoPod);
-    return Scaffold(body: Center(child: Text("Hello this is info: $temp")));
+    final tempCount = ref.watch(countPod);
+    return Scaffold(
+      body: Center(child: Text("Hello this is info: \n$temp & $tempCount")),
+    );
   }
 }
