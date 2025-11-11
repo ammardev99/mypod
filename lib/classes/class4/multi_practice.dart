@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mypod/classes/data/model_bank.dart';
@@ -24,8 +23,8 @@ class MultiStatePractice extends ConsumerWidget {
                 final temp = ref.watch(
                   practiceP.select((state) => state.radious),
                 );
-                print("build Radious $temp");
-                final tempMaster = ref.read(practiceP.notifier);
+                final tempProvider = ref.read(practiceP.notifier);
+                print("build Radious ${temp.toStringAsFixed(0)}");
                 return Column(
                   children: [
                     // for radious
@@ -36,7 +35,9 @@ class MultiStatePractice extends ConsumerWidget {
                           height: 100,
                           decoration: BoxDecoration(
                             color: Colors.amber,
-                            borderRadius: BorderRadius.circular(temp),
+                            borderRadius: BorderRadius.circular(
+                              tempProvider.state.radious,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 10), // or your gapBox(10)
@@ -47,7 +48,7 @@ class MultiStatePractice extends ConsumerWidget {
                             min: 0,
                             max: 99,
                             onChanged: (value) {
-                              tempMaster.state = tempMaster.state.copyWith(
+                              tempProvider.state = tempProvider.state.copyWith(
                                 radious: value,
                               );
                             },
@@ -59,12 +60,11 @@ class MultiStatePractice extends ConsumerWidget {
                 );
               },
             ),
-
             // opecity only
             Consumer(
               builder: (context, ref, child) {
                 final temp = ref.watch(practiceP.select((state) => state.opty));
-                print("build opecity $temp");
+                print("build opecity ${temp.toStringAsFixed(1)}");
                 final tempMaster = ref.read(practiceP.notifier);
                 return Column(
                   children: [
@@ -77,7 +77,6 @@ class MultiStatePractice extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(temp),
                       ),
                     ),
-
                     SizedBox(
                       width: 120,
                       child: Slider(
@@ -100,10 +99,11 @@ class MultiStatePractice extends ConsumerWidget {
             gapBox(10),
             Consumer(
               builder: (context, ref, child) {
-                final tempWidth = ref.watch(practiceP.select((state) => state.xSide),);
+                final tempWidth = ref.watch(
+                  practiceP.select((state) => state.xSide),
+                );
                 final controller = ref.read(practiceP.notifier);
-                print("build width $tempWidth");
-
+                print("build width ${tempWidth.toStringAsFixed(1)}");
                 return Column(
                   children: [
                     Container(
@@ -131,6 +131,7 @@ class MultiStatePractice extends ConsumerWidget {
             ),
             Consumer(
               builder: (context, ref, child) {
+                print("build text");
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

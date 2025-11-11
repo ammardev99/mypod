@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mypod/classes/class4/multi_practice.dart';
+import 'package:mypod/classes/class5/multi_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
         // home: SimpleProvider2(),
         // home: StateProviderLess(),
         // home: StateProviderFull(),
-        home: MultiStatePractice(),
+        // home: MultiStatePractice(), // c4
+        // home: PersonScreen() // c5 State notifier provider
+        home: MultiStateUI(), // c5 multi state notifier provider
       ),
     );
   }
